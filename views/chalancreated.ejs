@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Challan Creation</title>
+
+    <style>
+        .tinytable {
+            border-left: 1px solid #c6d5e1;
+            border-top: 1px solid #c6d5e1;
+            border-bottom: none
+        }
+
+        .tinytable th {
+            width: 800px;
+            background-color: #004872;
+            height: 10px;
+            text-align: center;
+            color: #cfdce7;
+            border: 1px solid #fff;
+            border-right: none
+        }
+
+        .tinytable th h3 {
+            font-size: 10px;
+            padding: 3px 4px 4px
+        }
+
+        .tinytable td {
+            padding: 2px 2px 2px;
+            font-size: 9px;
+            font-family: Verdana;
+            font-style: normal;
+            font-weight: 800;
+            font-variant-ligatures: normal;
+            font-variant-caps: normal;
+            font-variant-numeric: normal;
+            font-variant-east-asian: normal;
+            font-stretch: normal;
+            line-height: normal;
+            display: table-cell;
+            vertical-align: inherit;
+            border-bottom: 1px solid #c6d5e1;
+            border-right: 1px solid #c6d5e1
+        }
+    </style>
+</head>
+
+<body>
+     <h3>Total Sum Challan : <%=sumtotal%></h3>
+     <h3>Total Sum Scan PKG : <%=totalscan%></h3>
+      <h3>Total Device : <%=totodevice%></h3>
+     <h3>Total Avg:   <%=AvgTotal%> %</h3>
+    
+    <p style="color:mediumblue;"><span style="text-decoration: underline; font-weight: bold;">Note</span>:- This % is based on boxes excluded FTL</p> 
+    <h1>Challan Detail Created By BarCode Scanner</h1>
+
+    <table class="tinytable">
+         
+        <tr>
+            <th>SL</th>
+            <th>CHALLAN_FROM</th>
+            <th>DEVICE</th>
+            <th>TRANSIP</th>
+            <th>INTRANS_DEV</th>
+            <th>DLVERY</th>
+            <th>DLYDEV</th>
+            <th>TOTAL_CH</th>
+            <th>TOTAL_CHA_DEV</th>
+            <th>TOTAL_PKG</th>
+            <th>SCAN_PKG</th>
+            <th>PER_DEV</th>
+            <th>BOX %</th>
+            <th>UNLOD_BOX</th>
+            <th>MOB_CN</th>
+        </tr>
+        <% Data.forEach(function (data, index) { %>
+        
+        <tr>
+            <td><%= index + 1 %></td>
+            <td><%= data.CHLN_NAME %></td>
+            <td><%= data.DEVICES %></td>
+            <td><%= data.TANSITMENT %></td>
+            <td><%= data.IN_DEVICE %></td>
+            <td><%= data.DELIVERY %></td>
+            <td><%= data.DLY_DEVICE %></td>
+            <td><%= data.TOTAL_CHALLAN %></td>
+            <td><%= data.CHALLAN_BY_DEVICE %></td>
+            <td><%= data.TOTAL_CHLN_PKG %></td>
+            <td><%= data.TOTAL_SCAN_BOX %></td>
+            <td><%= data.DEV_UTILITY %></td>
+            <td><%= data.BOX_WISE_PER.toFixed(2) %></td>
+            <td><%= data.UNLOAD_BOX %></td>
+             <td><%= data.MOBCN %></td>
+        </tr>
+        <%})%>
+
+    </table>
+
+</body>
+
+</html>
